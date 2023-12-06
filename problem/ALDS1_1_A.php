@@ -3,7 +3,7 @@
 function insertionSort(array $A,int $N){
     print(implode(' ', $A).PHP_EOL);
 
-    if (true === sortJudge($A)) {
+    if (true === sortJudge($A, $N)) {
         return;
     }
 
@@ -20,9 +20,9 @@ function insertionSort(array $A,int $N){
     return $A;
 }
 
-function sortJudge(array $A) {
+function sortJudge(array $A, int $N) {
     foreach($A as $key => $val){
-        if ($key + 1 === count($A) - 1) {
+        if ($key + 1 === $N) {
             break;
         }
 
@@ -33,15 +33,7 @@ function sortJudge(array $A) {
     return true;
 }
 
-$test_arr = [5, 2, 4, 6, 1, 3];
-$ans = insertionSort($test_arr, count($test_arr));
-print("\n");
+$N = (int) trim(fgets(STDIN));
+$A = array_map('intval', explode(' ', trim(fgets(STDIN))));
 
-$test_arr = [1, 2, 3];
-$ans = insertionSort($test_arr, count($test_arr));
-print("\n");
-
-$test_arr = [1001,2,300, 54, 9000, 6, 5, 400000];
-$ans = insertionSort($test_arr, count($test_arr));
-
-# docker exec php8.1 php /var/www/php-py/problem/ALDS1_1_A.php 
+insertionSort($A, $N);
