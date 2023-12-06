@@ -1,24 +1,24 @@
-version: '3'
+version: "3"
 
 services:
-    php:
-        #image: php:8.1-fpm
-        build:
-            context: .
-            dockerfile: Dockerfile.php
-        volumes:
-            - .:/var/www/php-py
-        ports:
-            - 8000
-        container_name: php8.1
-    python3:
-        #image: python:3.10
-        build:
-            context: .
-            dockerfile: Dockerfile.python
-        volumes:
-            - .:/var/www/php-py
-        tty: true
-        ports:
-            - 5000
-        container_name: python3.10
+  php:
+    #image: php:8.1-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    volumes:
+      - .:/var/www/php-py
+    ports:
+      - 8999
+    container_name: php8.1
+  python3:
+    #image: python:3.10
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    volumes:
+      - .:/var/www/php-py
+    tty: true
+    ports:
+      - 5000
+    container_name: python3.10
