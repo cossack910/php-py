@@ -1,6 +1,6 @@
 <?php
 
-function insertionSort(array $A,int $N){
+function insertionSort(array $A,int $N) {
     print(implode(' ', $A).PHP_EOL);
 
     if (true === sortJudge($A, $N)) {
@@ -17,7 +17,6 @@ function insertionSort(array $A,int $N){
         $A[$j+1] = $v;
         print(implode(' ', $A).PHP_EOL);
     }
-    return $A;
 }
 
 function sortJudge(array $A, int $N) {
