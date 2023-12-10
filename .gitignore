@@ -1,5 +1,0 @@
-.pytest_cache
-algorithm
-!/Dockerfile.*
-test.*
-*.py
