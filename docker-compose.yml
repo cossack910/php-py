@@ -12,7 +12,7 @@ services:
       - 8999
     container_name: php8.1
   python3:
-    #image: python:3.10
+    #image: python:3.11
     build:
       context: .
       dockerfile: Dockerfile.python
@@ -21,4 +21,4 @@ services:
     tty: true
     ports:
       - 5000
-    container_name: python3.10
+    container_name: python3.11
