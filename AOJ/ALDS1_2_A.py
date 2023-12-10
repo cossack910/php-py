@@ -1,3 +1,5 @@
+# バブルソート
+
 def bubbleSort(A, N):
     flg = 1
     change = 0
