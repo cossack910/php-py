@@ -1,5 +1,5 @@
 # Dockerfile.php
-FROM php:8.1-fpm
+FROM php:8.1-cli
 
 WORKDIR /var/www/php-py
 
@@ -7,4 +7,4 @@ WORKDIR /var/www/php-py
 RUN curl --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar \
     && chmod +x /usr/local/bin/phpunit
 
-COPY . .
+COPY . .docker
