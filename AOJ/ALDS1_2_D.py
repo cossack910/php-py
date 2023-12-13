@@ -12,14 +12,15 @@ def insertionSort(A, n, g):
         A[j+g] = v
         
 def shellSort(A, n):
-    m = n//2
     h = 1
     G = []
-    while h < n:
+    while h <= n:
         G.append(h)
+        # シェルソートの間隔決める n**1.25
         h = 3*h + 1
     #逆順
     G = G[::-1]
+    m  = len(G)
     print(m)
     print(' '.join(map(str, G)))
     
@@ -28,11 +29,12 @@ def shellSort(A, n):
     
 num = int(input())
 
-arr = []
-for i in range(num):
-    arr.append(int(input()))
-    
+arr = [int(input()) for i in range(num)]
 shellSort(arr, num)
 print(cnt)
 for i in arr:
     print(i)
+    
+# シェルソートの間隔値と計算量について参考
+# https://web.archive.org/web/20170212072405/http://www.programming-magic.com/20100507074241/
+# https://algoful.com/Archive/Algorithm/ShellSort
