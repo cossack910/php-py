@@ -1,5 +1,5 @@
 # Dockerfile.python
-FROM python:3.11
+FROM python:3.11-slim
 
 WORKDIR /var/www/php-py
 

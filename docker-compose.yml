@@ -22,3 +22,14 @@ services:
     ports:
       - 5000
     container_name: python3.11
+
+  ruby:
+    build:
+      context: .
+      dockerfile: Dockerfile.ruby
+    volumes:
+      - .:/var/www/php-py
+    tty: true
+    ports:
+      - 3000
+    container_name: ruby3.2.2
