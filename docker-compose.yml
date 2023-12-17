@@ -13,6 +13,7 @@ services:
     ports:
       - 8999
     container_name: php8
+
   python3:
     platform: "linux/amd64"
     #image: python:3.11
