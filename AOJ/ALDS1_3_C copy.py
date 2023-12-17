@@ -1,12 +1,10 @@
-from collections import deque
-
 n = int(input())
 
-ans = deque()
+ans = []
 for i in range(n):
     val = input()
     if val[6] == 'F':
-        ans.popleft()
+        ans.pop(0)
         continue
             
     if val[6] == 'L':
@@ -15,13 +13,10 @@ for i in range(n):
         
     do, number = val.split(' ')
     if val[0] == 'i':
-        ans.appendleft(number)
+        ans.insert(0, number)
         continue
         
     if val[0] == 'd' and number in ans:
-        try:
-            ans.remove(number)
-        except:
-            pass
+        ans.remove(number)
             
 print(' '.join(ans))
