@@ -2,6 +2,7 @@ version: "3"
 
 services:
   php:
+    platform: "linux/amd64"
     #image: php:8
     build:
       context: .
@@ -13,6 +14,7 @@ services:
       - 8999
     container_name: php8
   python3:
+    platform: "linux/amd64"
     #image: python:3.11
     build:
       context: .
@@ -25,6 +27,7 @@ services:
     container_name: python3.11
 
   ruby:
+    platform: "linux/amd64"
     build:
       context: .
       dockerfile: Dockerfile.ruby
