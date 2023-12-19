@@ -1,18 +1,20 @@
+from collections import deque
+
 mizu = input()
 
-area = []
+stack = deque()
+stack2 = []
 
-top =0
-x = 0
-y = 0
 for m in range(len(mizu)):
-    if mizu[m] == "_":
-        x += 1
-        
     if mizu[m] == "\\":
-        x += 1
-        y -= 1
+        stack.append(m)
         
     if mizu[m] == "/":
-        x += 1
-        y += 1
+        if 0 < len(stack):
+            p = stack.pop()
+            stack2.append(list(map(int, [p, m])))           
+
+s_area = 0                
+for s in stack2:
+    s_area += s[1] - s[0]
+print(s_area)
