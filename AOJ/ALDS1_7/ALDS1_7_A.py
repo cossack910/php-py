@@ -20,22 +20,21 @@ def parentCheck(node):
 
 def depthCheck(node):
     depth = 0
-    for t in range(len(tree)):
-        flg = node
-        while True:
-            flg = parentCheck(flg)
-            if flg == -1:
-                return depth
-            depth += 1
+    while True:
+        node = parentCheck(node)
+        if node == -1:
+            return depth
+        depth += 1
 
-def typeCheck(node):
+def typeCheck(node, depth):
     for t in range(len(tree)):
         if tree[t][0] == node:       
-            if depthCheck(node) == 0:
+            if depth == 0:
                 return ', root, [' + ', '.join(list(map(str, [tree[t][i] for i in range(1, len(tree[t]))]))) +']'
             if len(tree[t]) == 1:
                 return ', leaf, []'
             return ', internal node, [' + ', '.join(list(map(str, [tree[t][i] for i in range(1, len(tree[t]))]))) +']'
 
-for i in range(n):
-    print('node ' + str(i) + ': parent = ' + str(parentCheck(i)) + ', depth = ' + str(depthCheck(i)) + typeCheck(i))
+# for i in range(n):
+#     depth = depthCheck(i)
+#     print('node ' + str(i) + ': parent = ' + str(parentCheck(i)) + ', depth = ' + str(depth) + typeCheck(i, depth))
