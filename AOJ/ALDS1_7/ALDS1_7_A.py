@@ -1,40 +1,28 @@
 n = int(input())
 
-tree = []
+tree_dict = {} 
+children_set = set([i for i in range(n)])
+
 for i in range(n):
     A = list(map(int, input().split(' ')))
-    tmp = [A[0]]
-    for i in range(2, 2 + A[1]):
-        tmp.append(A[i])
-    tree.append(tmp)
+    idx,k,children = A[0],A[1],A[2:]
+    tree_dict[idx] = children
+    children_set = children_set - set(children)#木全体から子を差集合していくことでroot(根)が求められる
 
-def parentCheck(node):
-    for t in range(len(tree)):
-        if tree[t][0] == node:
-            for i in range(len(tree)):
-                if t != i:
-                    for j in range(len(tree[i])):
-                        if tree[i][j] == node:
-                            return tree[i][0]
-            return -1
+node_info = [[list(children_set)[0],-1,0]]# idx, 親, 深さ　探索のスタート地点なので必ず親と深さは-1, 0で固定
+anser_dict = {}
 
-def depthCheck(node):
-    depth = 0
-    while True:
-        node = parentCheck(node)
-        if node == -1:
-            return depth
-        depth += 1
+while node_info:
+    idx, parent, depth = node_info.pop()
+    if parent == -1:
+        anser_dict[idx] = [idx,parent,depth,"root",tree_dict[idx]]
+    elif len(tree_dict[idx]) > 0:
+        anser_dict[idx] = [idx,parent,depth,"internal node",tree_dict[idx]]
+    else:
+        anser_dict[idx] = [idx,parent,depth,"leaf",tree_dict[idx]]
+        
+    for child in tree_dict[idx]:
+        node_info.append([child,idx,depth+1])
 
-def typeCheck(node, depth):
-    for t in range(len(tree)):
-        if tree[t][0] == node:       
-            if depth == 0:
-                return ', root, [' + ', '.join(list(map(str, [tree[t][i] for i in range(1, len(tree[t]))]))) +']'
-            if len(tree[t]) == 1:
-                return ', leaf, []'
-            return ', internal node, [' + ', '.join(list(map(str, [tree[t][i] for i in range(1, len(tree[t]))]))) +']'
-
-# for i in range(n):
-#     depth = depthCheck(i)
-#     print('node ' + str(i) + ': parent = ' + str(parentCheck(i)) + ', depth = ' + str(depth) + typeCheck(i, depth))
+for i in range(n):
+    print(f"node {i}: parent = {anser_dict[i][1]}, depth = {anser_dict[i][2]}, {anser_dict[i][3]}, {anser_dict[i][4]}")
