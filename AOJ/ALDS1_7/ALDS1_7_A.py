@@ -7,7 +7,7 @@ for i in range(n):
     A = list(map(int, input().split(' ')))
     idx,k,children = A[0],A[1],A[2:]
     tree_dict[idx] = children
-    children_set = children_set - set(children)#木全体から子を差集合していくことでroot(根)が求められる
+    children_set = children_set - set(children)# 木全体から子を差集合していくことでroot(根)が求められる
 
 node_info = [[list(children_set)[0],-1,0]]# idx, 親, 深さ　探索のスタート地点なので必ず親と深さは-1, 0で固定
 anser_dict = {}
